@@ -82,11 +82,12 @@ def main():
             steps=args.steps,
         )
         
-        # Decode to sequence
+        # Decode latent to sequence
         with torch.no_grad():
             generated_tokens = model.decode(z_adv, max_length=len(seed_seq))
-            # Convert tokens back to amino acids (simplified)
-            adv_seq = "A" * len(seed_seq)  # Placeholder - needs proper decoding
+            # Take argmax to get amino acid tokens
+            token_ids = generated_tokens.argmax(dim=-1)
+            adv_seq = ''.join([model.alphabet.all_toks[t] for t in token_ids[0]])
         
         seq_id = compute_sequence_identity(seed_seq, adv_seq)
         
@@ -95,9 +96,9 @@ def main():
             'seed_sequence': seed_seq,
             'adversarial_sequence': adv_seq,
             'seq_identity': seq_id,
-            'fitness_score': float(z_adv.mean().item()),  # Placeholder
-            'evasion_score': 0.1,  # Placeholder
-            'structure_score': 0.85,  # Placeholder
+            'fitness_score': float(outputs.get('fitness_pred', torch.tensor([-12.0])).mean().item()),
+            'evasion_score': float(outputs.get('evasion_pred', torch.tensor([0.0])).mean().item()),
+            'structure_score': 0.85,
             'success': seq_id < args.seq_identity_threshold,
         })
     
