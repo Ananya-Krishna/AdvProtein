@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 """
-Improved Protein Organized AutoEncoder (OAE) for NeurIPS 2025
-
-Key improvements based on your feedback:
 1. Proper contrastive alignment between sequence and structure modalities
 2. Explicit regularization to prevent modality collapse
 3. Better structure preservation in the attack phase
@@ -194,4 +191,4 @@ class ManifoldLangevinSampler:
         return z.detach()
 
 
-print("Improved OAE model loaded. Ready for NeurIPS-quality experiments.")
+print("Improved OAE model loaded")
