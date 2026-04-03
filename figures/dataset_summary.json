@@ -1,0 +1,15 @@
+{
+  "total_proteins": 3500,
+  "folded": 3353,
+  "pct_folded": 95.8,
+  "mean_plddt": 46.22176514018206,
+  "median_plddt": 42.08141975308642,
+  "mean_length": 173.71057142857143,
+  "sources": {
+    "cath_s40": 1500,
+    "bfvd_viral": 1500,
+    "benign_swissprot": 500
+  },
+  "high_quality_plddt": 341,
+  "low_quality_plddt": 1487
+}

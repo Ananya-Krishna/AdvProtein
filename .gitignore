@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Data and large files
+data/structures/
+data/cpu_batches/
+data/aggressive_batches/
+*.pdb
+*.fasta
+*.log
+*.err
+
+# Old experimental scripts
+scripts/aggressive_parallel_fold.py
+scripts/batch_esmfold.py
+scripts/clean_final_folding.py
+scripts/create_folding_batches.py
+scripts/create_remaining_batch.py
+scripts/create_small_cpu_batches.py
+scripts/diagnose_missing_structures.py
+scripts/fast_folding.py
+scripts/final_folding.py
+scripts/final_merge_robust.py
+scripts/final_remaining_batch.py
+scripts/merge_structures_fixed.py
+scripts/run_esmfold.py
+
+# Checkpoints and logs
+model/checkpoints/
+model/runs/
+*.pth
+*.log
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Temporary
+*.tmp
+*~
+tmp/
