@@ -96,7 +96,8 @@ def train_one_epoch(model, train_loader, optimizer, device, epoch, writer, args)
         
         # 3. Evasion prediction loss
         evasion_targets = batch.get('commec_flagged', torch.zeros((len(sequences), 1), device=device))
-        evasion_loss = nn.BCEWithLogitsLoss()(outputs.get('evasion_pred', torch.zeros_like(evader_targets)), 
+        evasion_pred = outputs.get('evasion_pred', torch.zeros_like(evader_targets))
+        evasion_loss = nn.BCEWithLogitsLoss()(evasion_pred, 
                                             evasion_targets.to(device).unsqueeze(1).float())
         loss = loss + args.evasion_weight * evasion_loss
         
