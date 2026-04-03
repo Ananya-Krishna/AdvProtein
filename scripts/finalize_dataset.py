@@ -65,7 +65,7 @@ def recompute_esm_commec():
         scores = esm_batch_logprobs(seqs_to_compute)
         df.loc[mask, "esm2_logprob_mean"] = scores
 
-    # === commec (using your exact folder) ===
+    # commec screening
     commec_script = f"{DATA_ROOT}/common-mechanism/commec/screen.py"
     print("Re-screening BFVD rows with commec...")
     for i in tqdm(df[df["source"].str.startswith("bfvd")].index, desc="commec"):
@@ -97,7 +97,7 @@ def write_slurm():
 #SBATCH --output=esmfold.log
 
 source ~/.bashrc
-conda activate adv-protein   # your env
+conda activate adv-protein
 
 mkdir -p {STRUCT_DIR}
 colabfold_batch {FASTA_OUT} {STRUCT_DIR}/ \\

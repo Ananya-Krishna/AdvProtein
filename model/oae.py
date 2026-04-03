@@ -117,7 +117,7 @@ class ProteinOAE(nn.Module):
     def decode(self, z: torch.Tensor, max_length: int = 512) -> torch.Tensor:
         """Decode latent representation back to amino acid sequence logits."""
         batch_size = z.shape[0]
-        # Create target sequence placeholder
+        # Create target sequence
         tgt = torch.zeros((batch_size, max_length, self.latent_dim), device=z.device)
         memory = z.unsqueeze(1).expand(-1, max_length, -1)
         
