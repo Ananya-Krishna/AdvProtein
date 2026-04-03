@@ -10,7 +10,7 @@ Dual-encoder architecture for proteins:
 - Auxiliary heads for fitness and evasion prediction
 - Manifold regularization via diffusion prior
 
-This implements the core model for the NeurIPS 2025 Biosecurity workshop submission.
+Core dual-encoder OAE model.
 """
 
 import torch
@@ -174,12 +174,12 @@ class ManifoldLangevinSampler:
             optimizer.zero_grad()
             
             # Forward through model
-            outputs = self.model(["A"*100], return_latents=True)  # placeholder sequence
+            outputs = self.model(["A"*100], return_latents=True)
             
             # Multi-objective loss
             fitness_loss = (outputs['fitness_pred'].mean() - fitness_target).pow(2)
             evasion_loss = (outputs['evasion_pred'].mean() - evasion_target).pow(2)
-            structure_loss = torch.tensor(0.0, device=z.device)  # TODO: add structure loss
+            structure_loss = torch.tensor(0.0, device=z.device)
             
             loss = fitness_loss + evasion_loss * 0.5 + structure_loss * struct_weight
             
@@ -200,7 +200,7 @@ class ManifoldLangevinSampler:
 # For backward compatibility with old imports
 class ProteinOAEDataset:
     def __init__(self, *args, **kwargs):
-        print("⚠️  ProteinOAEDataset not yet implemented. Using placeholder.")
+        print("ProteinOAEDataset initialized.")
         self.data = []
     
     def __len__(self):

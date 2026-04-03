@@ -1,5 +1,5 @@
 """
-make_figures.py - Generate all publication-ready figures for the NeurIPS Biosecurity Safeguards workshop submission.
+Generate analysis figures.
 
 Creates:
 - t-SNE of latent space colored by objective trade-off
@@ -130,7 +130,7 @@ def main():
     }, output_dir / "success_rates.png")
     
     print(f"✅ All figures saved to {output_dir}/")
-    print("Figures ready for NeurIPS submission.")
+    print("Figures generated.")
 
 
 if __name__ == "__main__":
